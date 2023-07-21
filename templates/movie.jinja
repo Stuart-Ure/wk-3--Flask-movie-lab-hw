@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>{% extends 'base.jinja' %}
+
+{% block content %}
+
+<title>Movie Details</title>
+</head>
+<body class = body>
+    <h1>Movie Details</h1>
+    <li>
+    <li><b> Title:</b> {{movie.title}}</li>
+    <li><b> Director:</b> {{ movie.director }}</li> 
+    <li><b> Genre:</b>{{ movie.genre }} </li>
+
+</body>
+    
+{% endblock  %}

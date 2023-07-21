@@ -1,4 +1,4 @@
-
+{# 
 {% extends 'base.jinja' %}
 
 {% block content %}
@@ -24,12 +24,51 @@
     <ul>
         {% for movie in movies %}
         <li>{{ movie.title }} </li>
+    <b><a href="/movies/{{ movies.index(movie) }}">{{ movie.movie_title }} - Click for movie info</a></b>
         {% endfor %}
     </ul>
 
+    <form action="/movies/deleteindex", method="post">
+    <input type ="hidden" name="index" value={{movies.index(movie)}}>
+    <input type="submit" value = "delete me">
+    
+    </form>
+  </li>
+
     {% endblock %}
 </body>
-</html>
+</html> #}
 
+{% extends 'base.jinja' %}
 
-{# - {{ movie.director }} - {{ movie.genre }} #}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   
+   <form action="/movies" method="post"> 
+        <label for="title">Movie title</label>
+        <input type="text" name="title" id="movie-title" placeholder="Please enter a movie title :)">
+        
+        <label for="director">Director</label>
+        <input type="text" name="director" id="director" placeholder="Who is the director?">
+        
+        <label for="genre">Genre</label>
+        <input type="text" name="genre">
+        
+        <input type="submit" value="Add Movie">
+    </form>
+    
+    <ul class="movie-list">
+        {% for movie in movies %}
+        <li>
+            {{ movie.title }}
+            <b><a href="/movies/{{ loop.index }}">{{ movie.title }} - Click for movie info</a></b>
+            
+            <form action="/movies/deleteindex" method="post">
+                <input type="hidden" name="index" value="{{ loop.index }}">
+                <input type="submit" value="Delete me">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
