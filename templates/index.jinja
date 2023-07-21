@@ -5,6 +5,16 @@
     <h1>{{ title}}</h1>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
    
+   <form action="/movies" method= "post"> 
+  <label for = "title"> Movie title</label>
+  <input type = "text" name = "title" id = "movie title" placeholder=" please enter a movie title:)">
+  <label for = "director"> Director</label>
+  <input type = "text" name = "director" id = "director" placeholder=" who is the director?">
+  
+  <label for = "genre"> Genre </label>
+  <input type="text" name="genre">
+
+  <input type="submit" value= "Add Movie">
 <html>
 <head>
     <title>{{ title }}</title>
@@ -13,9 +23,13 @@
 <body>
     <ul>
         {% for movie in movies %}
-        <li>{{ movie.title }} - {{ movie.director }} - {{ movie.genre }}</li>
+        <li>{{ movie.title }} </li>
         {% endfor %}
     </ul>
+
     {% endblock %}
 </body>
 </html>
+
+
+{# - {{ movie.director }} - {{ movie.genre }} #}
